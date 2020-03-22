@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="minusButton2"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="countInput2">
+                           <button class="btn btn-default" id="plusButton2"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$59</h5>
@@ -87,6 +87,14 @@
         const decreaseBtn = document.getElementById("minusButton");
         decreaseBtn.addEventListener("click",function(){
                 minusFunction("countInput");
+                            })
+        const increaseBtn2 = document.getElementById("plusButton2");        
+        increaseBtn2.addEventListener("click",function(){
+                plusFunction("countInput2");
+                            })
+        const decreaseBtn2 = document.getElementById("minusButton2");
+        decreaseBtn2.addEventListener("click",function(){
+                minusFunction("countInput2");
                             })
         function plusFunction(id){
                 const currentValue = document.getElementById(id).value;
