@@ -78,12 +78,14 @@
       </div>
    </section>
    <script>
-        // plus button handler
+        // plus and minus button handler
         getBtn("plusButton","countInput");
         getBtn("minusButton","countInput");
         getBtn("plusButton2","countInput2");
         getBtn("minusButton2","countInput2");
-
+        document.getElementById("countInput").value = "1";
+        document.getElementById("countInput2").value = "1";
+        // plus and minus button inner functionalities defined here
         function getBtn(buttonId, inputId){
             const buttonFunction = document.getElementById(buttonId);
             buttonFunction.addEventListener("click",function(){
@@ -104,7 +106,7 @@
                 const currentValue = document.getElementById(id).value;
                 const totalValue = parseInt(currentValue) - 1;
                 document.getElementById(id).value = totalValue;
-}
+        }
    </script>
 </body>
 
