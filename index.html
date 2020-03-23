@@ -79,23 +79,22 @@
    </section>
    <script>
         // plus button handler
-        const increaseBtn = document.getElementById("plusButton");        
-        increaseBtn.addEventListener("click",function(){
-                plusFunction("countInput");
-                            })
-        // minus button handler
-        const decreaseBtn = document.getElementById("minusButton");
-        decreaseBtn.addEventListener("click",function(){
-                minusFunction("countInput");
-                            })
-        const increaseBtn2 = document.getElementById("plusButton2");        
-        increaseBtn2.addEventListener("click",function(){
-                plusFunction("countInput2");
-                            })
-        const decreaseBtn2 = document.getElementById("minusButton2");
-        decreaseBtn2.addEventListener("click",function(){
-                minusFunction("countInput2");
-                            })
+        getBtn("plusButton","countInput");
+        getBtn("minusButton","countInput");
+        getBtn("plusButton2","countInput2");
+        getBtn("minusButton2","countInput2");
+
+        function getBtn(buttonId, inputId){
+            const buttonFunction = document.getElementById(buttonId);
+            buttonFunction.addEventListener("click",function(){
+                    if(buttonId=="plusButton" || buttonId =="plusButton2"){
+                        plusFunction(inputId);
+                    }
+                    else if(buttonId=="minusButton" || buttonId == "minusButton2"){
+                        minusFunction(inputId);
+                    }
+                })
+            }
         function plusFunction(id){
                 const currentValue = document.getElementById(id).value;
                 const totalValue = parseInt(currentValue) + 1;
