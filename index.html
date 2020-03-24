@@ -29,7 +29,7 @@
                            <input type="text" class="form-control text-center" value="1" id="countInput">
                            <button class="btn btn-default" id="plusButton"><i class="fas fa-plus" ></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="price1">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -48,7 +48,7 @@
                            <button class="btn btn-default" id="plusButton2"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="price2">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -78,35 +78,51 @@
       </div>
    </section>
    <script>
+
+        // initializing unit prices
+        
+        const getUnitPrice1 = document.getElementById("price1").innerText;
+        const unitPrice1 = parseInt(getUnitPrice1);
+        const getUnitPrice2 = document.getElementById("price2").innerText;
+        const unitPrice2 = parseInt(getUnitPrice2);
+
         // plus and minus button handler
-        getBtn("plusButton","countInput");
-        getBtn("minusButton","countInput");
-        getBtn("plusButton2","countInput2");
-        getBtn("minusButton2","countInput2");
+
+        plusMinusBtn("plusButton","countInput");
+        plusMinusBtn("minusButton","countInput");
+        plusMinusBtn("plusButton2","countInput2");
+        plusMinusBtn("minusButton2","countInput2");
+
+        // to reset value of input form after browser refresh
+
         document.getElementById("countInput").value = "1";
         document.getElementById("countInput2").value = "1";
+        document.getElementById("price1").innerText= "1219";
+        document.getElementById("price2").innerText = "59";
+        
         // plus and minus button inner functionalities defined here
-        function getBtn(buttonId, inputId){
+
+        function plusMinusBtn(buttonId, inputId){
             const buttonFunction = document.getElementById(buttonId);
             buttonFunction.addEventListener("click",function(){
                     if(buttonId=="plusButton" || buttonId =="plusButton2"){
-                        plusFunction(inputId);
+                        const numberOfProduct1 = document.getElementById(inputId).value;
+                        const totalNumberOfProduct1 = parseInt(numberOfProduct1) + 1;
+                        document.getElementById(inputId).value = totalNumberOfProduct1;
                     }
                     else if(buttonId=="minusButton" || buttonId == "minusButton2"){
-                        minusFunction(inputId);
+                        const numberOfProduct2 = document.getElementById(inputId).value;
+                        const totalNumberOfProduct2 = parseInt(numberOfProduct2) - 1;
+                        document.getElementById(inputId).value = totalNumberOfProduct2;
                     }
+                    document.getElementById("price1").innerText = calculatePrice(unitPrice1,document.getElementById("countInput").value);
+                    document.getElementById("price2").innerText = calculatePrice(unitPrice2,document.getElementById("countInput2").value);
                 })
             }
-        function plusFunction(id){
-                const currentValue = document.getElementById(id).value;
-                const totalValue = parseInt(currentValue) + 1;
-                document.getElementById(id).value = totalValue;
-        }
-        function minusFunction(id){
-                const currentValue = document.getElementById(id).value;
-                const totalValue = parseInt(currentValue) - 1;
-                document.getElementById(id).value = totalValue;
-        }
+       function calculatePrice(price,numberProduct){
+           const totalPriceNumber = price * numberProduct;
+           return totalPriceNumber; 
+       }
    </script>
 </body>
 
