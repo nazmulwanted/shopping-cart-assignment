@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subTotal">1,278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="grandTotal">1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -85,6 +85,10 @@
         const unitPrice1 = parseInt(getUnitPrice1);
         const getUnitPrice2 = document.getElementById("price2").innerText;
         const unitPrice2 = parseInt(getUnitPrice2);
+        const getSubTotal = document.getElementById("subTotal").innerText;
+        const initSubTotal = parseInt(getSubTotal);
+        const getGrandTotal = document.getElementById("grandTotal").innerText;
+        const initGrandTotal = parseInt(getGrandTotal);
 
         // plus and minus button handler
 
@@ -117,6 +121,7 @@
                     }
                     document.getElementById("price1").innerText = calculatePrice(unitPrice1,document.getElementById("countInput").value);
                     document.getElementById("price2").innerText = calculatePrice(unitPrice2,document.getElementById("countInput2").value);
+                    document.getElementById("subTotal").innerText = parseInt(document.getElementById("price1").innerText) + parseInt(document.getElementById("price2").innerText);
                 })
             }
        function calculatePrice(price,numberProduct){
